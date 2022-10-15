@@ -1,0 +1,91 @@
+/* Color scheme of the Windows Calculator App */
+:root {
+  --bg-main: #1f1f1f;
+  --bg-dark-low: #131313;
+  --bg-dark-high: #060606;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(-45deg, #23A6D5, #23D5AB, #3E517A, #b08ea2);
+	background-size: 400% 400%;
+	animation: gradient 60s ease infinite;
+}
+
+@keyframes gradient {
+	0% {background-position: 0% 50%;}
+	50% {background-position: 100% 50%;}
+	100% {background-position: 0% 50%;}
+}
+/* Gradient Credit: https://codepen.io/P1N2O/pen/pyBNzX?editors=0110 */
+
+.calc_container {
+  background-color: var(--bg-main);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  width:min(428px, 95%);
+  padding: 1em;
+  border-radius: 5px;
+  align-self: center;
+}
+
+.calc_display{
+  font-size: 4.5rem;
+  color: white;
+  text-align: right;
+  margin: 3px 5px;
+}
+
+.calc_display h3{
+  font-size: 1.3rem;
+  text-align: left;
+  font-weight: lighter;
+}
+
+.calc_display .secondary_display{
+  margin: 10px 0px;
+  font-size: 1.9rem;
+  color: #5fb3f7;
+}
+
+.calc_buttons_section{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.3em;
+}
+
+.calc_buttons_section > button{
+  color: white;
+  padding: 2em;
+  font-size: 1.5rem;
+  border: 0;
+}
+
+.operation_key,
+.clear_key,
+.clear_all_key{background-color: var(--bg-dark-low);}
+
+.number_key{background-color: var(--bg-dark-high);}
+
+.calculate_key{background-color: #133a59;}
+
+.calc_buttons_section > button:hover{
+  background-color: var(--bg-main);
+  cursor: pointer;
+}
+
+.calculate_key:hover{background-color:#2a64a6 !important;}

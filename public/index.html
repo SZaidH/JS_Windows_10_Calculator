@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windows Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="calc_container">
+
+    <!-- Calculator Display Area (Contains primary and secondary display numbers) -->
+    <section class="calc_display">
+      <h3>Windows Calculator</h3>
+      <p class="secondary_display">0</p>
+      <p class="primary_display">0</p>
+    </section>
+
+    <!-- Calculator section with number and operation keys -->
+    <section class="calc_buttons_section">
+      <button class="operation_key" value="%">%</button>
+      <button class="clear_key" value="CE">CE</button>
+      <button class="clear_all_key" value="C">C</button>
+      <!-- Following keys to be implemented after testing the basic calculator functionalities -->
+      <!-- <button class="operation_key" value="DEL">DEL</button> -->
+      <!-- <button class="operation_key" value="1/x">1/x</button> -->
+      <!-- <button class="operation_key" value="x2">x2</button> -->
+      <!-- <button class="operation_key" value="√">√</button> -->
+      <button class="operation_key" value="/">÷</button>
+
+      <button class="number_key" value="7">7</button>
+      <button class="number_key" value="8">8</button>
+      <button class="number_key" value="9">9</button>
+      <button class="operation_key">*</button>
+
+      <button class="number_key" value="4">4</button>
+      <button class="number_key" value="5">5</button>
+      <button class="number_key" value="6">6</button>
+      <button class="operation_key">-</button>
+
+      <button class="number_key" value="1">1</button>
+      <button class="number_key" value="2">2</button>
+      <button class="number_key" value="3">3</button>
+      <button class="operation_key">+</button>
+
+      <button class="number_key" value="+/-">+/-</button>
+      <button class="number_key" value="0">0</button>
+      <button class="number_key" value=".">.</button>
+      <button class="calculate_key">=</button>
+    </section>
+  </main>
+  <script src="calc.js"></script> 
+</body>
+
+</html>

@@ -1,0 +1,17 @@
+{
+  "name": "js_calculator",
+  "version": "1.0.0",
+  "description": "Windows Calculator made with JS",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zaid",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}

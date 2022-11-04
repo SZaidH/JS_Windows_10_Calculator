@@ -2,14 +2,16 @@
 let primaryNum = '';
 let secondNum = '';
 let operator = '';
-let decimalState = false;
 let result = null;
+let decimalState = false;
+let checkDivZero = false;
 
 // HTML DOM elements
 let primaryDisp = document.querySelector('.primary_display'); 
 let secondaryDisp = document.querySelector('.secondary_display');
 let numButtons = document.querySelectorAll('.number_key');
 let oprButtons = document.querySelectorAll('.operation_key');
+let inverseButton = document.querySelector('.inverse_key');
 let clearButton =document.querySelector('.clear_key');
 let clearAllButton = document.querySelector('.clear_all_key');
 let clearElButton = document.querySelector('.clear_key');
@@ -27,7 +29,8 @@ const clearAllDisplay = () =>{
 }
 // clearElDisplay - Implements CE key's functionality (Clear Element)
 const clearElDisplay = () =>{
-    if(secondNum){
+    if(result) clearAllDisplay();
+    else if(secondNum){
         secondNum = '';
         primaryDisp.innerText = '0'
     }else{
@@ -36,11 +39,18 @@ const clearElDisplay = () =>{
         primaryDisp.innerText = '0'
     }
 }
+// inverseSign - For toggling positive and negative numbers 
+const inverseSign = () =>{
+    let tempNum = parseFloat(primaryDisp.innerText) * -1;
+    primaryDisp.innerText = tempNum.toString();
+    if(primaryNum) primaryNum = tempNum.toString();
+    else if(secondNum) secondNum = tempNum.toString();
+}
 // appendDisplay - Insert/Modify the content inside the Calculator Display area  
 const appendDisplay = dispVal =>{ 
     if(dispVal === '.' && !decimalState) decimalState = true;
     else if(dispVal === '.' && decimalState) return;
-    else if( primaryNum.length > 5) return;
+    else if( primaryDisp.innerText.length > 5) return;
     
     if(operator){
         secondNum += dispVal;
@@ -66,13 +76,19 @@ const calculate = () => {
         if(operator === '+') result = primaryNum + secondNum;
         else if(operator === '-') result = primaryNum - secondNum;
         else if(operator === '*') result = primaryNum * secondNum;
+        else if((operator === '÷' || operator === '/') && (secondNum === 0))checkDivZero = true;       
         else if(operator === '÷' || operator === '/') result = primaryNum / secondNum;
         else if(operator === '%') result = primaryNum % secondNum;
         secondaryDisp.innerHTML = primaryNum + " " + operator + " " + secondNum + " " + "=";
-        primaryDisp.innerHTML = result;
-        primaryNum = result;
-        secondNum = ''
-        operator = '';
+        if(!checkDivZero){
+            primaryDisp.innerHTML = result;
+            primaryNum = result;
+            secondNum = ''
+            operator = '';
+        }else{
+            primaryDisp.innerHTML = "Can't divide by 0";
+            checkDivZero = false;
+        }
     }
 }
 
@@ -81,6 +97,7 @@ numButtons.forEach((btn) => { btn.addEventListener("click", (e) => { appendDispl
 oprButtons.forEach((btn)=> {btn.addEventListener("click", (e)=>{ insertOperation(e.target.innerText) })});
 clearAllButton.addEventListener("click", clearAllDisplay);
 clearElButton.addEventListener("click", clearElDisplay);
+inverseButton.addEventListener("click", inverseSign);
 calcButton.addEventListener("click",calculate);
 
 window.addEventListener("keydown",(e)=>{
